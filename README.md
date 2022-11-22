@@ -1,2 +1,1 @@
-# projeto8-jogoforca
-Projeto n° 8 do curso de desenvolvimento fullstack da Driven 
+# [Driven Education](https://www.driven.com.br/) - Projeto 8 - Jogo da Forca
