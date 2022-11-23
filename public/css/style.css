@@ -66,6 +66,11 @@ body {
     border-radius: 3px;
 }
 
+.selecionavel{
+    color: #39739D;
+    background: #E1ECF4; 
+}
+
 
 .chute{
     display: flex;
