@@ -1,9 +1,9 @@
-import { alfabeto } from "./App";
+import React from 'react'
 
 function Letras () {
     return(
     <>
-        <h4 className="palavra">_ _ _ _ _ _ _ _ _ _</h4>
+        <h4 className="palavra">______</h4>
     </>
       );
 }
