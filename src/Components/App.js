@@ -1,5 +1,4 @@
 import React from 'react'
-import Chute from './Chute';
 import palavras from '../Palavras';
 
 
@@ -17,6 +16,8 @@ function App() {
   const [jogando, setJogando] = React.useState(false);
   const [palavra, setPalavra] = React.useState("");
   const [erros, setErros] = React.useState(0);
+
+  const chuteValor = React.useRef(null);
 
   function iniciarJogo(){
     setSelecionados([]);
@@ -87,6 +88,22 @@ function App() {
 
   }
 
+  function chutarPalavra(){
+    const palavraEscrita = (chuteValor.current.value);
+
+    if(palavraEscrita === palavraEscolhida){
+      setPalavra(palavraEscolhida);
+      setJogando(false);
+      console.log("Ganhou!");
+    }
+    else{
+      setPalavra(palavraEscolhida);
+      setErros(maximaTentativas);
+      setJogando(false);
+      console.log("Perdeu!");
+    }
+  }
+
   return(
     <>
         <img className="forca" src={`./assets/forca${erros}.png`} alt="forca" />
@@ -95,7 +112,11 @@ function App() {
         <div className="containerLetras">
             {alfabeto.map(letra => <button onClick={() => clicouLetra(letra)} key={letra} className={`letraSelecao ${selecionados.includes(letra) ? "" : "selecionavel"}`}>{letra.toUpperCase()}</button>)}
         </div>
-        <Chute />
+        <div className="chute">
+          Já sei a palavra!
+          <input ref={chuteValor} type="text"/>
+          <button onClick={() => chutarPalavra()}>Chutar</button>
+        </div>
     </>
   );
 }
