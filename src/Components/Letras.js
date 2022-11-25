@@ -1,4 +1,4 @@
-function Letras () {
+function Letras (props) {
     return(
     <>
         
