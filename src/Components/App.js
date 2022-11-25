@@ -2,9 +2,11 @@ import React from 'react'
 import Chute from './Chute';
 import palavras from '../Palavras';
 
+
+let maximaTentativas = 6;
 let palavraEscolhida;
 let quantidadeDeAcertos = 0;
-let palavraTemplate = ""
+let palavraTemplate = "";
 let errosAtuais = 0;
 
 function App() {
@@ -27,7 +29,7 @@ function App() {
     const palavraAleatoria = palavras[Math.floor(Math.random()*palavras.length)];
     palavraEscolhida = palavraAleatoria;
     for(let i = 0; i < palavraEscolhida.length; i++){
-      palavraTemplate += "_ "
+      palavraTemplate += "_";
     }
     setPalavra(palavraTemplate);
     console.log(palavraEscolhida);
@@ -35,9 +37,7 @@ function App() {
 
   function clicouLetra(letraClicado) {
 
-    palavraTemplate = "";
-
-    if (errosAtuais === 6){
+    if (errosAtuais === maximaTentativas){
       setJogando(false);
       console.log("Perdeu!");
       return;
@@ -57,22 +57,28 @@ function App() {
       if (!letraCorreta){
         errosAtuais++;
         setErros(erros + 1);
-        palavraTemplate += "_ ";
-        console.log(palavraTemplate);
       }
       else{
-        for (let i = 0; i < palavraEscolhida.length; i++){
-          if(palavraEscolhida[i] === letraClicado){
-            quantidadeDeAcertos++;
-            palavraTemplate += letraClicado + " ";
+        let novo = "";
+
+        for(let i = 0; i < palavraEscolhida.length; i++){
+          if(letraClicado === palavraEscolhida[i]){
+              novo += letraClicado;
+              quantidadeDeAcertos++;
+            }
+          else if("_" !== palavraTemplate[i]){
+              novo += palavraTemplate[i];
+          }
+          else{
+            novo += "_"
           }
         }
-        console.log(palavraTemplate);
+        palavraTemplate = novo;
+      }
       }
 
       setSelecionados([...selecionados, letraClicado])
       setPalavra(palavraTemplate);
-    }
 
     if (quantidadeDeAcertos === palavraEscolhida.length){
       setJogando(false);
