@@ -115,16 +115,16 @@ function App() {
 
   return(
     <>
-        <img className="forca" src={`./assets/forca${erros}.png`} alt="forca" />
-        <button onClick={() => iniciarJogo()} className="botaoPalavra">Escolher Palavra</button>
-        <h4 className={`palavra ${(status === 1) ? "ganhou" : ""} ${(status === -1) ? "perdeu" : ""}`}>{palavra}</h4>
+        <img data-test="game-image" className="forca" src={`./assets/forca${erros}.png`} alt={`Imagem forca n° ${erros}`} />
+        <button data-test="choose-word" onClick={() => iniciarJogo()} className="botaoPalavra">Escolher Palavra</button>
+        <div data-test="word" data-answer={palavraEscolhida} className={`palavra ${(status === 1) ? "ganhou" : ""} ${(status === -1) ? "perdeu" : ""}`}>{palavra}</div>
         <div className="containerLetras">
-            {alfabeto.map(letra => <button onClick={() => clicouLetra(letra)} key={letra} className={`letraSelecao ${selecionados.includes(letra) ? "" : "selecionavel"}`}>{letra.toUpperCase()}</button>)}
+            {alfabeto.map(letra => <button data-test="letter" disabled={status === 0 ? false : true} onClick={() => clicouLetra(letra)} key={letra} className={`letraSelecao ${selecionados.includes(letra) ? "" : "selecionavel"}`}>{letra.toUpperCase()}</button>)}
         </div>
         <div className="chute">
           Já sei a palavra!
-          <input ref={chuteValor} type="text"/>
-          <button onClick={() => chutarPalavra()}>Chutar</button>
+          <input data-test="guess-input" ref={chuteValor} type="text"/>
+          <button data-test="guess-button" disabled={status === 0 ? false : true} onClick={() => chutarPalavra()}>Chutar</button>
         </div>
     </>
   );

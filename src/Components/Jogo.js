@@ -1,4 +1,4 @@
-function Jogo () {
+function Jogo (props) {
     return(
     <>
         

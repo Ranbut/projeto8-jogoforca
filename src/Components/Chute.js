@@ -1,4 +1,4 @@
-function Chute () {
+function Chute (props) {
     return(
         <>
 
