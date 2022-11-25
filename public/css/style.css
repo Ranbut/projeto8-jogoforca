@@ -41,6 +41,14 @@ body {
     text-align: center;
 }
 
+.ganhou{
+    color:#27AE60;
+}
+
+.perdeu{
+    color:#FF0000;
+}
+
 .containerLetras{
     margin-left: 18%;
     width: 806px;

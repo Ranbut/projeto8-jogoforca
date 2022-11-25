@@ -14,14 +14,18 @@ function App() {
 
   const [selecionados, setSelecionados] = React.useState([]);
   const [jogando, setJogando] = React.useState(false);
+  const [status, setStatus] = React.useState(0);
   const [palavra, setPalavra] = React.useState("");
   const [erros, setErros] = React.useState(0);
 
   const chuteValor = React.useRef(null);
 
   function iniciarJogo(){
+    quantidadeDeAcertos = 0;
     setSelecionados([]);
+    errosAtuais = 0;
     setErros(0)
+    setStatus(0);
     setJogando(true);
     escolherPalavra();
   }
@@ -29,6 +33,7 @@ function App() {
   function escolherPalavra(){
     const palavraAleatoria = palavras[Math.floor(Math.random()*palavras.length)];
     palavraEscolhida = palavraAleatoria;
+    palavraTemplate = "";
     for(let i = 0; i < palavraEscolhida.length; i++){
       palavraTemplate += "_";
     }
@@ -37,12 +42,6 @@ function App() {
   }
 
   function clicouLetra(letraClicado) {
-
-    if (errosAtuais === maximaTentativas){
-      setJogando(false);
-      console.log("Perdeu!");
-      return;
-    }
 
     const jaEscolhido = selecionados.includes(letraClicado)
     let letraCorreta = false;
@@ -81,7 +80,15 @@ function App() {
       setSelecionados([...selecionados, letraClicado])
       setPalavra(palavraTemplate);
 
+    if (errosAtuais === maximaTentativas){
+        setStatus(-1);
+        setJogando(false);
+        console.log("Perdeu!");
+        return;
+      }
+
     if (quantidadeDeAcertos === palavraEscolhida.length){
+      setStatus(1);
       setJogando(false);
       console.log("Ganhou!");
     }
@@ -93,12 +100,14 @@ function App() {
 
     if(palavraEscrita === palavraEscolhida){
       setPalavra(palavraEscolhida);
+      setStatus(1);
       setJogando(false);
       console.log("Ganhou!");
     }
     else{
       setPalavra(palavraEscolhida);
       setErros(maximaTentativas);
+      setStatus(-1);
       setJogando(false);
       console.log("Perdeu!");
     }
@@ -108,7 +117,7 @@ function App() {
     <>
         <img className="forca" src={`./assets/forca${erros}.png`} alt="forca" />
         <button onClick={() => iniciarJogo()} className="botaoPalavra">Escolher Palavra</button>
-        <h4 className="palavra">{palavra}</h4>
+        <h4 className={`palavra ${(status === 1) ? "ganhou" : ""} ${(status === -1) ? "perdeu" : ""}`}>{palavra}</h4>
         <div className="containerLetras">
             {alfabeto.map(letra => <button onClick={() => clicouLetra(letra)} key={letra} className={`letraSelecao ${selecionados.includes(letra) ? "" : "selecionavel"}`}>{letra.toUpperCase()}</button>)}
         </div>
