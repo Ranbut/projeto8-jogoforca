@@ -83,6 +83,7 @@ function App() {
     if (errosAtuais === maximaTentativas){
         setStatus(-1);
         setJogando(false);
+        setPalavra(palavraEscolhida);
         console.log("Perdeu!");
         return;
       }
