@@ -6,24 +6,6 @@
     color:#FF0000;
 }
 
-.letraSelecao{
-    width: 50px;
-    height: 50px;
-    margin-left: 12px;
-    margin-top: 12px;
-
-    text-align: center;
-    line-height: 18.75px;
-    color: #7AA7C7;
-    font-weight: 700;
-    font-size: 16px;
-
-    background: #9FAAB5;
-    box-sizing: border-box;    
-    border: 1px solid #7AA7C7;
-    border-radius: 3px;
-}
-
 .selecionavel{
     color: #39739D !important;
     background: #E1ECF4 !important; 
