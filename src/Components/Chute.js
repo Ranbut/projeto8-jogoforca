@@ -1,7 +1,4 @@
 function Chute (props) {
-
-  console.log(props.status);
-
     return(
     <>
         <div className="chute">
