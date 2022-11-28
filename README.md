@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Descrição
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Essa semana iremos fazer a nossa versão de um jogo muito conhecido: o jogo da forca! Nele, a pessoa jogadora tem que adivinhar uma palavra chutando letra por letra e, se cometer 6 erros, ela perde o jogo. Caso adivinhe a palavra antes disso, ela ganha. 
 
-## Available Scripts
+# Instruções Gerais
+- [X]  Você deve criar o projeto com o `create-react-app` padrão, SEM usar nenhum template, e delete os arquivos que não serão utilizados
+- [X]  Ao terminar o projeto, você obrigatoriamente deverá realizar o **deploy utilizando a Vercel**
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Requisitos
+- Geral
+    - [X]  Manipule o HTML usando somente React (sem usar o document nem bibliotecas como jQuery)
+    - [X]  Seu projeto deverá ser desenvolvido utilizando Git e GitHub
+    - [X]  **A cada requisito implementado** faça um commit com uma mensagem descritiva do que você evoluiu. Caso queira dividir um requisito em vários commits, não há problema. Mas evite colocar mais de um requisito no mesmo commit
+- Layout  
+- Componentização
+    - [X]  O seu jogo deverá ter 4 componentes:
+        - [X]  App (chamará os demais componentes)
+        - [X]  Jogo (imagem da forca, botão de iniciar, palavra do jogo)
+        - [X]  Letras (conjunto de botões com as letras)
+        - [X]  Chute (input e botão de chute)
+- Pré-jogo
+    - [X]  Crie um arquivo chamado `palavras.js` e coloque ele dentro da pasta `src` (o nome e o local precisam ser esses!)
+    - [X]  Dentro do arquivo, insira o array de palavras disponibilizado abaixo:
+        - Esse array possui strings que serão as palavras que o jogador deverá adivinhar. Você deverá importar esse array no componente `App` para utilizá-lo.
+        - Você não deve mudar o nome do array! Mas se quiser mudar o conteúdo para adicionar palavras, fique à vontade 😄
+    - [X]  Os botões de letras devem ser mapeados através de um array do alfabeto
+        - Array do alfabeto
+    - [X]  Antes de o jogo iniciar, o input e os botões de letras devem estar desabilitados
+- Ao apertar “escolher palavra”
+    - [X]  Input e letras passam a ficar habilitadas
+    - [X]  A contagem de erros nesse momento é 0, a imagem da forca vazia é mostrada
+    - [X]  Você deve sortear uma das palavras do array que está no arquivo `palavras.js` para o usuário tentar adivinhar
+    - [X]  Aparece a palavra a ser adivinhada na tela, com um underline ( `_` ) para cada letra que a palavra possui
+- Ao pressionar uma letra
+    - [X]  O botão de uma letra já clicada deve ficar desabilitado
+    - [X]  Se a palavra escolhida no jogo tiver a letra que o usuário apertou:
+        - [X]  O underline da posição correspondente à letra deve ser substituído pela letra em si
+        - [X]  As palavras disponibilizadas não possuem caracteres especiais, então não precisa se preocupar com isso!
+    - [X]  Se a palavra escolhida no jogo NÃO tiver a letra que o usuário apertou:
+        - [X]  Sua contagem de erros deve aumentar
+        - [X]  A imagem na forca deve mudar (forca0 > forca1 > forca2… e assim sucessivamente)
+- Input de chute
+    - [X]  Caso o usuário deseje, ele pode chutar a palavra inteira no input
+    - [X]  Ao fazer isso, se acertar a palavra, ele ganha imediatamente
+    - [X]  Mas, se errar, ele perde imediatamente, independente da contagem anterior de erros. A imagem que deve aparecer nesse momento é a do bonequinho enforcado (forca6)
+- Fim de jogo
+    - [X]  Botões de letras e input de chute devem ser desabilitados
+    - [X]  Caso o usuário ganhe:
+        - [X]  Quando o usuário ganha, a palavra completa fica em **verde** e os botões e input voltam a ficar desabilitados
+        - [X]  Para continuar a jogar, o usuário deve apertar o botão “Escolher Palavra”, e o jogo será reiniciado do zero
+    - [X]  Caso o usuário perca:
+        - [X]  A imagem final que deve aparecer é a do boneco enforcado (forca6)
+        - [X]  A palavra deve ser revelada, mas em **vermelho**
+# Bônus
+- Reiniciar o jogo
+    - [X] A qualquer momento, o usuário pode reiniciar o jogo pressionando o botão “escolher palavra”
+    - Uma nova palavra é sorteada
+    - O jogo deve voltar ao estado inicial (0 erros, imagem inicial da forca, palavra apenas com risquinhos, input limpo, todos os botões de letras habilitados)
+- Faça a estilização do projeto utilizando `styled-components`
+    - Não esqueça de instalar a biblioteca com o comando `npm install styled-components`
+- Considerar caracteres especiais
+    - [X]  Quando o usuário pressionar uma letra sem acento (ex: a) e, na palavra, houver a mesma letra mas com acento (ex: à, á, â, ã), ela deve ser considerada como certo
+    - [X]  Além dos acentos, cosidere também que c e ç são equivalentes
