@@ -3,6 +3,7 @@ import palavras from '../Palavras';
 import Chute from './Chute';
 import Letras from './Letras';
 import Jogo from './Jogo';
+import GlobalStyle from '../globalStyles'
 
 let maximaTentativas = 6;
 let palavraEscolhida;
@@ -119,6 +120,7 @@ function App() {
 
   return(
     <>
+      <GlobalStyle />
       <Jogo erros={erros} status={status} chuteValor={chuteValor} iniciarJogo={iniciarJogo} escolherPalavra={escolherPalavra} palavra={palavra} palavraEscolhida={palavraEscolhida} />
       <Letras status={status} selecionados={selecionados} clicouLetra={clicouLetra}/>
       <Chute status={status} chuteValor={chuteValor} chutarPalavra={chutarPalavra}/>
