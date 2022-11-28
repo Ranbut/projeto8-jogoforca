@@ -47,14 +47,15 @@ function App() {
 
     const jaEscolhido = selecionados.includes(letraClicado)
     let letraCorreta = false;
+    const palavraNormalizada = palavraEscolhida.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
     for(let i = 0; i < palavraEscolhida.length; i++){
-      if(letraClicado === palavraEscolhida[i]){
+      if(letraClicado === palavraNormalizada[i]){
         letraCorreta = true;
         break;
       }
     }
-    
+
     if (jogando && !jaEscolhido) {
       if (!letraCorreta){
         errosAtuais++;
@@ -64,10 +65,10 @@ function App() {
         let novo = "";
 
         for(let i = 0; i < palavraEscolhida.length; i++){
-          if(letraClicado === palavraEscolhida[i]){
-              novo += letraClicado;
+          if(letraClicado === palavraNormalizada[i]){
+              novo += palavraEscolhida[i];
               quantidadeDeAcertos++;
-            }
+          }
           else if("_" !== palavraTemplate[i]){
               novo += palavraTemplate[i];
           }

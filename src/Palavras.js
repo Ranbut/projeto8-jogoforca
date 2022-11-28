@@ -21,7 +21,23 @@ const palavras = [
     "uva", "universo", "unanimidade", "ubuntu", "universidade", "urso", "uivar", "unir",
     "vela", "valeta", "vacilo", "valor", "vagem", "vadiagem", "vaca", "valentia", "vidro", "valsa",
     "xadrez", "xilofone", "xarope", "xenofobia", "xereta", "xerife", "xaveco", "xixi", "xale",
-    "zebra", "zagueiro", "zero", "zoeira", "zepelim", "zinco", "zumbido"
+    "zebra", "zagueiro", "zero", "zoeira", "zepelim", "zinco", "zumbido", "álbum", "fácil", "réptil", "éden", "ímpar", "vírus", "sótão", "tórax", "túnel", "júri", "sofá", "crachá", "parabéns",
+    "jacarés", "açaí", "cipós", "dominó", "baú", "plástico", "gráfico", "espécie", "célebre", "míope",
+    "líquido", "próximo", "fósforo", "último", "público", "imprescindível", "aurélio", "dicionário", "cônjuge",
+    "resiliência", "recíproco", "intrínseco", "efêmero", "cínico", "caráter", "anuência", "diligência",
+    "ninfomaníaca", "condolências", "intempérie", "idôneo", "contemporâneo", "escrúpulo", "supérfluo", "idílico",
+    "âmbito", "análogo", "genuíno", "propósito", "essência", "hipócrita", "parcimônia", "misógino", "estória",
+    "implícito", "viés", "néscio", "índole", "referência", "complacência", "corolário", "âmago", "pêsames",
+    "peremptório", "empírico", "família", "característica", "inexorável", "inócuo", "êxito", "pragmático", "convém",
+    "condescendência", "esdrúxulo", "apático", "discrepância", "hermético", "concupiscência", "perspicácia",
+    "altruísmo", "altruísta", "arbitrário", "lascívia","extraordinário", "prodígio", "passível", "sádico",
+    "astúcia", "aleatório", "audácia", "promíscuo", "pródigo", "circunstância", "déspota", "híbrido",
+    "divergência", "contíguo", "indivíduo", "controvérsia", "veemência", "influência", "coerência", "profícuo",
+    "congruência", "princípio","autoritário", "herói", "sistêmico", "criança", "justiça", "cabeça", "açúcar",
+    "ambição", "coração", "paçoca", "confiança", "mudança", "engraçado", "convicção",
+    "abraço", "açaí", "doçura", "almoço", "bênção", "quiçá", "caçula", "muçulmano", "exceção",
+    "peça", "cansaço", "preço", "maciço", "preguiça", "crença", "canção", "espaço", "serviço",
+    "endereço", "açucareiro", "ranço", "alvoroço", "cachaça", "sumiço", "solução", "graça", "começo"
 ]
 
 export default palavras
