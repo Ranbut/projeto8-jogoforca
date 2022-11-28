@@ -27,7 +27,7 @@ function App() {
     setSelecionados([]);
     errosAtuais = 0;
     setErros(0)
-    setStatus(0);
+    setStatus(3);
     setJogando(true);
     escolherPalavra();
   }
