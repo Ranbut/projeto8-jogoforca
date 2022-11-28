@@ -1,6 +1,8 @@
 import React from 'react'
 import palavras from '../Palavras';
-
+import Chute from './Chute';
+import Letras from './Letras';
+import Jogo from './Jogo';
 
 let maximaTentativas = 6;
 let palavraEscolhida;
@@ -8,9 +10,9 @@ let quantidadeDeAcertos = 0;
 let palavraTemplate = "";
 let errosAtuais = 0;
 
-function App() {
+const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-  const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+function App() {
 
   const [selecionados, setSelecionados] = React.useState([]);
   const [jogando, setJogando] = React.useState(false);
@@ -20,7 +22,7 @@ function App() {
 
   const chuteValor = React.useRef(null);
 
-  function iniciarJogo(){
+  const iniciarJogo = () => {
     quantidadeDeAcertos = 0;
     setSelecionados([]);
     errosAtuais = 0;
@@ -30,7 +32,7 @@ function App() {
     escolherPalavra();
   }
 
-  function escolherPalavra(){
+  const escolherPalavra = () =>{
     const palavraAleatoria = palavras[Math.floor(Math.random()*palavras.length)];
     palavraEscolhida = palavraAleatoria;
     palavraTemplate = "";
@@ -41,7 +43,7 @@ function App() {
     console.log(palavraEscolhida);
   }
 
-  function clicouLetra(letraClicado) {
+  const clicouLetra = (letraClicado) => {
 
     const jaEscolhido = selecionados.includes(letraClicado)
     let letraCorreta = false;
@@ -96,7 +98,7 @@ function App() {
 
   }
 
-  function chutarPalavra(){
+  const chutarPalavra = () => {
     const palavraEscrita = (chuteValor.current.value);
 
     if(palavraEscrita === palavraEscolhida){
@@ -116,19 +118,12 @@ function App() {
 
   return(
     <>
-        <img data-test="game-image" className="forca" src={`./assets/forca${erros}.png`} alt={`Imagem forca n° ${erros}`} />
-        <button data-test="choose-word" onClick={() => iniciarJogo()} className="botaoPalavra">Escolher Palavra</button>
-        <div data-test="word" data-answer={palavraEscolhida} className={`palavra ${(status === 1) ? "ganhou" : ""} ${(status === -1) ? "perdeu" : ""}`}>{palavra}</div>
-        <div className="containerLetras">
-            {alfabeto.map(letra => <button data-test="letter" disabled={status === 0 ? false : true} onClick={() => clicouLetra(letra)} key={letra} className={`letraSelecao ${selecionados.includes(letra) ? "" : "selecionavel"}`}>{letra.toUpperCase()}</button>)}
-        </div>
-        <div className="chute">
-          Já sei a palavra!
-          <input data-test="guess-input" ref={chuteValor} type="text"/>
-          <button data-test="guess-button" disabled={status === 0 ? false : true} onClick={() => chutarPalavra()}>Chutar</button>
-        </div>
+      <Jogo erros={erros} status={status} chuteValor={chuteValor} iniciarJogo={iniciarJogo} escolherPalavra={escolherPalavra} palavra={palavra} palavraEscolhida={palavraEscolhida} />
+      <Letras status={status} selecionados={selecionados} clicouLetra={clicouLetra}/>
+      <Chute status={status} chuteValor={chuteValor} chutarPalavra={chutarPalavra}/>
     </>
   );
 }
 
 export default App;
+export {alfabeto};
